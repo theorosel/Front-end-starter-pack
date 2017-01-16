@@ -3,9 +3,9 @@
  */
 
 var config = {
-    'root': 'app/dist/',
-    'src' : 'app/src/',
-    'dist': 'app/dist/'
+    'root': 'dist/',
+    'src' : 'src/',
+    'dist': 'dist/'
 }
 
 
@@ -32,7 +32,7 @@ var gulp         = require('gulp'),
 gulp.task('connect', function() {
 
     connect.server({
-        root: 'app/dist',
+        root: 'dist',
         livereload: true
     });
 });
