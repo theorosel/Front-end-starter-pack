@@ -21,7 +21,8 @@ var gulp         = require('gulp'),
     sourcemaps   = require('gulp-sourcemaps'),
     connect      = require('gulp-connect'),
     autoprefixer = require('gulp-autoprefixer'),
-    rename       = require('gulp-rename');
+    rename       = require('gulp-rename'),
+    imagemin     = require('gulp-imagemin');
 
 
 /*
@@ -30,7 +31,6 @@ var gulp         = require('gulp'),
 
 // Connect
 gulp.task('connect', function() {
-
     connect.server({
         root: 'dist',
         livereload: true
@@ -49,7 +49,7 @@ gulp.task('html', () => {
 
 // Sass
 gulp.task('sass', function(){
-    return gulp.src( config.src + 'scss/*.scss' )
+    return gulp.src(config.src + 'scss/*.scss')
         .pipe(plumber({errorHandler: notify.onError('Error : <%= error.message %>')}))
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
@@ -61,15 +61,15 @@ gulp.task('sass', function(){
         .pipe(rename(function (path) {
             path.basename += '.min';
         }))
-        .pipe(gulp.dest( config.dist + 'assets/css'))
+        .pipe(gulp.dest(config.dist + 'assets/css'))
         .pipe(connect.reload())
         .pipe(notify('Saas compiled : <%= file.relative %> !'));
 });
 
 
-// Js
+// Javascript
 gulp.task('javascript', function() {
-    return gulp.src( config.src + 'js/*.js')
+    return gulp.src(config.src + 'js/*.js')
         .pipe(plumber({errorHandler: notify.onError('JS Error : <%= error.message %> ! ')}))
         .pipe(minify({
             ext:{
@@ -79,23 +79,43 @@ gulp.task('javascript', function() {
             ignoreFiles: ['.min.js'],
             noSource: false,
         }))
-        .pipe(gulp.dest( config.dist + 'assets/js'))
+        .pipe(gulp.dest(config.dist + 'assets/js'))
         .pipe(connect.reload())
-        .pipe(notify('JS compiled : <%= file.relative %> !'));;
+        .pipe(notify('JS compiled : <%= file.relative %> !'));
 });
+
+// Images
+gulp.task('images', function() {
+    return gulp.src(config.src + 'img/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest(config.dist + 'assets/img'))
+        .pipe(connect.reload())
+        .pipe(notify('Images minified : <%= file.relative %> !'));
+})
+
+
+// Fonts
+gulp.task('fonts', function() {
+    return gulp.src(config.src + 'font/**/*')
+        .pipe(gulp.dest(config.dist + 'assets/font'))
+        .pipe(connect.reload())
+        .pipe(notify('Fonts updated : <%= file.relative %> !'));
+})
 
 
 // Watch
 gulp.task('watch', function() {
-    gulp.watch( [ config.src + 'js/*.js'], ['javascript'] );
-    gulp.watch( [ config.src + 'scss/**/*.scss'], ['sass'] );
-    gulp.watch( [ config.src + '*.html'], ['html'] );
+    gulp.watch([config.src + 'js/*.js'], ['javascript']);
+    gulp.watch([config.src + 'scss/**/*.scss'], ['sass']);
+    gulp.watch([config.src + '*.html'], ['html']);
+    gulp.watch([config.src + 'img/*'], ['images']);
+    gulp.watch([config.src + 'font/*'], ['fonts']);
 })
 
 
 // Build
-gulp.task('build', ['html', 'sass', 'javascript'], function() {});
+gulp.task('build', ['html', 'sass', 'javascript', 'images', 'fonts'], function() {})
 
 
 // Default
-gulp.task('default', ['build', 'connect', 'watch'], function() {});
+gulp.task('default', ['build', 'connect', 'watch'], function() {})
