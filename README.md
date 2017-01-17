@@ -1,7 +1,7 @@
 Front-end Starter pack
 =======================
 
-A simple and quick starter for front-end projects.
+:rocket: A simple and quick starter with common front-end tasks using gulp as a build system.
 Including :
 
 * [Gulp](http://gulpjs.com/)
@@ -13,6 +13,7 @@ Including :
 - Js compress
 - Desktop notifications
 - Livereload
+- Images optimization
 
 ## First of all
 - You need [NodeJS](https://nodejs.org/en/) (which includes NPM)
