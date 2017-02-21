@@ -102,6 +102,14 @@ gulp.task('fonts', function() {
         .pipe(notify('Fonts updated : <%= file.relative %> !'));
 })
 
+// vendors
+gulp.task('vendors', function() {
+    return gulp.src(config.src + 'js/vendors/**/*')
+        .pipe(gulp.dest(config.dist + 'assets/js/vendors'))
+        .pipe(connect.reload())
+        .pipe(notify('Vendors updated : <%= file.relative %> !'));
+})
+
 
 // Watch
 gulp.task('watch', function() {
@@ -110,11 +118,12 @@ gulp.task('watch', function() {
     gulp.watch([config.src + '*.html'], ['html']);
     gulp.watch([config.src + 'img/*'], ['images']);
     gulp.watch([config.src + 'font/*'], ['fonts']);
+    gulp.watch([config.src + 'js/vendors/*'], ['vendors']);
 })
 
 
 // Build
-gulp.task('build', ['html', 'sass', 'javascript', 'images', 'fonts'], function() {})
+gulp.task('build', ['html', 'sass', 'javascript', 'images', 'fonts', 'vendors'], function() {})
 
 
 // Default
