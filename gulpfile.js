@@ -22,7 +22,8 @@ var gulp         = require('gulp'),
     connect      = require('gulp-connect'),
     autoprefixer = require('gulp-autoprefixer'),
     rename       = require('gulp-rename'),
-    imagemin     = require('gulp-imagemin');
+    imagemin     = require('gulp-imagemin'),
+    babel        = require('gulp-babel');
 
 
 /*
@@ -71,6 +72,9 @@ gulp.task('sass', function(){
 gulp.task('javascript', function() {
     return gulp.src(config.src + 'js/*.js')
         .pipe(plumber({errorHandler: notify.onError('JS Error : <%= error.message %> ! ')}))
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(minify({
             ext:{
                 src:'.js',
