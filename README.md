@@ -13,6 +13,7 @@ Including :
 - Js compress
 - Desktop notifications
 - Livereload
+- ES6 support
 - Images optimization
 
 ## First of all
