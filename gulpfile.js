@@ -6,24 +6,23 @@ const config = {
     env  : process.env.NODE_ENV === 'production'
 }
 
-const gulp         = require('gulp');
-const notify       = require('gulp-notify');
-const plumber      = require('gulp-plumber');
-const sass         = require('gulp-sass');
-const minify       = require('gulp-minify');
-const sourcemaps   = require('gulp-sourcemaps');
-const autoprefixer = require('gulp-autoprefixer');
-const rename       = require('gulp-rename');
-const imagemin     = require('gulp-imagemin');
-const babel        = require('gulp-babel');
-const browserify   = require('browserify');
-const babelify     = require('babelify');
-const source       = require('vinyl-source-stream');
-const util         = require('gulp-util');
-const browserSync  = require('browser-sync');
 
-const gulpif = require('gulp-if');
-
+const gulp         = require('gulp')
+const notify       = require('gulp-notify')
+const plumber      = require('gulp-plumber')
+const sass         = require('gulp-sass')
+const minify       = require('gulp-minify')
+const sourcemaps   = require('gulp-sourcemaps')
+const autoprefixer = require('gulp-autoprefixer')
+const rename       = require('gulp-rename')
+const imagemin     = require('gulp-imagemin')
+const babel        = require('gulp-babel')
+const browserify   = require('browserify')
+const babelify     = require('babelify')
+const source       = require('vinyl-source-stream')
+const util         = require('gulp-util')
+const browserSync  = require('browser-sync')
+const gulpif       = require('gulp-if')
 
 
 // Server
