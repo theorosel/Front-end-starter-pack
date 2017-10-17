@@ -80,6 +80,7 @@ gulp.task('javascript', () =>
     .pipe(notify('Js compiled : <%= file.relative %> !'))
 );
 
+
 // Images
 gulp.task('images', () =>
     gulp.src(config.src + 'img/*')
@@ -97,6 +98,7 @@ gulp.task('fonts', () =>
         .pipe(browserSync.stream())
         .pipe(notify('Fonts updated : <%= file.relative %> !'))
 );
+
 
 // vendors
 gulp.task('vendors', () =>
@@ -121,6 +123,5 @@ gulp.task('watch', () => {
 // Build
 gulp.task('build', ['html', 'sass', 'javascript', 'images', 'fonts', 'vendors'], () => {});
 
-
-// Default
+// Dev
 gulp.task('dev', ['html', 'sass', 'javascript', 'liveserver', 'watch'], () => {});
