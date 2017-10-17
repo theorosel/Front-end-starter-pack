@@ -1,5 +1,7 @@
-Front-end Starter pack
-=======================
+Lexus Slide - Redesign Concept
+==============================
+
+Team name : hetic-p2020-06
 
 :rocket: A simple and quick starter with common front-end tasks using gulp as a build system.
 Including :
