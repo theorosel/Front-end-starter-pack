@@ -1,22 +1,22 @@
-Lexus Slide - Redesign Concept
-==============================
+Front-end starter pack
+======================
 
-Team name : hetic-p2020-06
-
-:rocket: A simple and quick starter with common front-end tasks using gulp as a build system.
+:rocket: A simple starter with common front-end tasks using gulp as a build system.
 Including :
 
 * [Gulp](http://gulpjs.com/)
 * [Sass](http://sass-lang.com/)
+* [browserify](http://browserify.org/)
 
 ## Features
 - Sass
 - Autoprefixer
-- Js compress
-- Desktop notifications
-- Livereload
-- ES6 support
 - Images optimization
+- Desktop notifications
+- Javascript Module bundling
+- Hot reload
+- ES6 support
+
 
 ## First of all
 - You need [NodeJS](https://nodejs.org/en/) (which includes NPM)
